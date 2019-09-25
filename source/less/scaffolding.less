@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto"),
+      url("Roboto-Medium.woff2") format("woff2"),
+      url("Roboto-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto Condensed";
+    src: local("RobotoCondensed"),
+      url("RobotoCondensed-Regular.woff2") format("woff2"),
+      url("RobotoCondensed-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto Condensed";
+    src: local("RobotoCondensedBold"),
+      url("RobotoCondensed-Bold.woff2") format("woff2"),
+      url("RobotoCondensed-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "PT Mono";
+    src: local("PTMono"),
+      url("PTMono-Regular.woff2") format("woff2"),
+      url("PTMono-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  color: #666666;
+  font-family: "PT Mono", "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  background-color: #ffffff;
+}
+
+.visually-hidden:not(:active):not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  overflow: hidden;
+}
+
+.container {
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+@media (min-width: 501px) {
+  .container {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 769px) {
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+}
