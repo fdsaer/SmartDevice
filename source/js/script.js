@@ -1,88 +1,66 @@
 'use strict';
 
 (function () {
-  var paymentItems = document.querySelectorAll('.payment__list-item');
-  var deviceWidth = 320;
+  const menuButton = document.querySelector('.page-header__menu-toggle');
+  const menu = document.querySelector('.page-header__menu');
+  const callbackButton = document.querySelector('.page-header__callback-button');
+  const callbackForm = document.querySelector('.callback-popup');
+  const closeFormButton = callbackForm.querySelector('.callback-popup__close-button');
+  const overlay = document.querySelector('.overlay');
+  const permissionCheckbox = callbackForm.querySelector('.callback-popup__checkbox');
+  const submitButton = callbackForm.querySelector('.callback-popup__submit');
+  const ESC_KEYCODE = 27;
 
-  var menuToggle = function () {
-    if (!(window.screen.availWidth > 768) || !(window.innerWidth > 768)) {
-      for (var i = 0; i < paymentItems.length; i++) {
-        paymentItems[i].classList.remove('payment__list-item--active');
-        paymentItems[i].addEventListener('click', onClickEvent);
-      }
-    } else {
-      for (var i = 0; i < paymentItems.length; i++) {
-        paymentItems[i].classList.add('payment__list-item--active');
-        paymentItems[i].removeEventListener('click', onClickEvent);
-      }
-    }
-  };
+  let callbackFormIsClosed = true;
+  let menuIsClosed = true;
 
-  var onClickEvent = function (evt) {
-    if (evt.currentTarget.classList.contains('payment__list-item--active')) {
-      evt.currentTarget.classList.remove('payment__list-item--active');
-    } else {
-    evt.currentTarget.classList.add('payment__list-item--active');
-    }
-  };
-
-  window.addEventListener('resize', function () {
-    menuToggle ();
-  });
-
-  menuToggle ();
-
-  var enterMenuButtons = document.querySelectorAll('.header__user-menu-item--checked-out');
-  var overlay = document.querySelector('.overlay');
-  var enterMenuModal = document.querySelector('.modal-login');
-  var modalCloseButton = enterMenuModal.querySelector('.modal-login__close-button');
-  var checkedIn = false;
-
-  var closeModal =function () {
+  let closeModal =function () {
+    callbackButton.classList.remove('page-header__callback-button--opened');
     overlay.classList.add('overlay--hidden');
-    enterMenuModal.classList.add('modal-login--hidden');
-  }
+    callbackForm.classList.add('callback-popup--hidden');
+    callbackFormIsClosed = true;
+    document.removeEventListener('keydown', onPopupEscPress);
+  };
 
-  var openModal = function () {
-    overlay.classList.remove('overlay--hidden');
-    enterMenuModal.classList.remove('modal-login--hidden');
-  }
-
-  var onHelpClickEvent = function (evt) {
-    if (!checkedIn) {
-      evt.preventDefault();
-      openModal();
-      modalCloseButton.addEventListener('click', closeModal);
+  let onPopupEscPress = function (evt) {
+    if (evt.keyCode === ESC_KEYCODE) {
+      closeModal();
     }
-  }
+  };
 
-  for (var i = 0; i < enterMenuButtons.length; i++) {
-    enterMenuButtons[i].addEventListener('click', onHelpClickEvent);
-  }
+  let openModal = function () {
+    callbackButton.classList.add('page-header__callback-button--opened');
+    callbackForm.classList.remove('callback-popup--hidden');
+    overlay.classList.remove('overlay--hidden');
+    callbackFormIsClosed = false;
+    document.addEventListener('keydown', onPopupEscPress);
+    closeFormButton.addEventListener('click', closeModal);
+  };
 
-  var helpMenuButton = document.querySelector('.header__help-button');
-  var helpMenu = document.querySelector('.header__help-menu-wrapper');
-  var helpMenuClosed = true;
-
-  helpMenuButton.addEventListener('click', function () {
-    if (helpMenuClosed) {
-      helpMenuButton.classList.remove('header__help-button--closed');
-      helpMenu.classList.remove('header__help-menu-wrapper--hidden');
-      helpMenuClosed = false;
+  permissionCheckbox.addEventListener('change', function () {
+    if (permissionCheckbox.checked == true) {
+      submitButton.disabled = false;
     } else {
-      helpMenuButton.classList.add('header__help-button--closed');
-      helpMenu.classList.add('header__help-menu-wrapper--hidden');
-      helpMenuClosed = true;
+      submitButton.disabled = true;
     }
   });
 
-  var topLine = document.querySelector('.header__top-line');
+  callbackButton.addEventListener('click', function () {
+    if (callbackFormIsClosed) {
+      openModal();
+    }
+    closeFormButton.addEventListener('click', closeModal);
+  });
 
-  window.addEventListener('scroll', function() {
-    if (pageYOffset > 0) {
-      topLine.classList.add('header__top-line--shadow');
+  menuButton.addEventListener('click', function () {
+    if (menuIsClosed) {
+      menuButton.classList.add('page-header__menu-toggle--opened');
+      menu.classList.remove('page-header__menu--hidden');
+      menuIsClosed = false;
     } else {
-      topLine.classList.remove('header__top-line--shadow');
+      menuButton.classList.remove('page-header__menu-toggle--opened');
+      menu.classList.add('page-header__menu--hidden');
+      menuIsClosed = true;
     }
   });
 })();

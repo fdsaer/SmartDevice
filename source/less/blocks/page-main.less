@@ -1,4 +1,230 @@
-div {
-  height: 647px;
+.page-main__top-side-wrapper {
   background: url("../img/tablet-bg@1x.jpg");
+  background-position: right -147px top -9px;
+  background-repeat: no-repeat;
+  background-size: 736px 656px;
+  background-color: #1b2d37;
+}
+
+.page-main__top-side {
+  box-sizing: border-box;
+  margin-bottom: 27px;
+  padding-top: 92px;
+  padding-bottom: 70px;
+}
+
+.page-main__top-side-image {
+  position: relative;
+  z-index: 5;
+  margin-left: 26px;
+}
+
+.page-main__title {
+  position: relative;
+  margin: 0 15px;
+  margin-bottom: 27px;
+  margin-top: -33px;
+  padding: 0;
+  font-family: "Roboto Condensed Bold", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 47px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #ffffff;
+  z-index: 10;
+}
+
+.page-main__promo {
+  position: relative;
+  margin: 0 15px;
+  margin-left: 67px;
+  margin-bottom: 41px;
+  padding: 0;
+  font-family: "PT Mono", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 25px;
+  color: #ffffff;
+  text-transform: lowercase;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: -49px;
+    width: 33px;
+    height: 2px;
+    background-color: #ffffff;
+  }
+}
+
+.page-main__advice-link {
+  display: block;
+  box-sizing: border-box;
+  width: 287px;
+  margin: 0 16px;
+  margin-left: 18px;
+  padding: 16px 10px;
+  padding-bottom: 17px;
+  text-align: center;
+  text-decoration: none;
+  background: #00b2ff;
+  border-radius: 5px;
+}
+
+.page-main__advice-text {
+  font-family: "Roboto Condensed Bold", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  text-transform: uppercase;
+
+  &--desktop {
+    display: none;
+  }
+}
+
+.page-main__scroll-down {
+  display: none;
+}
+
+@media (min-width: 580px) {
+  .page-main__top-side-wrapper {
+    background-position: 0 0;
+    background-size: 770px 686px;
+  }
+}
+
+@media (min-width: 680px) {
+  .page-main__top-side {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 45px;
+    padding: 73px;
+    padding-top: 113px;
+    padding-bottom: 162px;
+  }
+
+  .page-main__top-side-left {
+    width: 80%;
+    margin-top: 75px;
+    flex-shrink: 1;
+    order: -1;
+  }
+
+  .page-main__top-side-image {
+    width: 260px;
+    height: auto;
+    margin-left: 0;
+    margin-right: -73px;
+    flex-grow: 1;
+  }
+
+  .page-main__title {
+    margin-bottom: 29px;
+    margin-top: 0;
+    font-size: 60px;
+    line-height: 70px;
+  }
+
+  .page-main__promo {
+    margin-bottom: 55px;
+    font-size: 18px;
+    line-height: 156.8%;
+  }
+
+  .page-main__advice-link {
+    width: 87%;
+    max-width: 430px;
+    margin-left: 66px;
+  }
+
+  .page-main__advice-text--mobile {
+    display: none;
+  }
+
+  .page-main__advice-text--desktop {
+    display: inline;
+  }
+}
+
+@media (min-width: 771px) {
+  .page-main__top-side-wrapper {
+    background: url("../img/desktop-bg@1x.jpg");
+    background-size: 1920px 878px;
+  }
+}
+
+@media (min-width: 1580px) {
+  .page-main__top-side {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 39px;
+    padding-top: 258px;
+    padding-bottom: 99px;
+  }
+
+  .page-main__top-side-left {
+    margin-top: 57px;
+  }
+
+  .page-main__top-side-image {
+    width: 705px;
+  }
+
+  .page-main__title {
+    margin: 0;
+    margin-bottom: 27px;
+    font-size: 80px;
+    line-height: 94px;
+  }
+
+  .page-main__promo {
+    margin-left: 98px;
+    margin-right: 10px;
+    margin-bottom: 44px;
+    font-size: 22px;
+    line-height: 34px;
+
+    &::before {
+      top: 17px;
+      left: -94px;
+      width: 66px;
+    }
+  }
+
+  .page-main__advice-link {
+    width: 407px;
+    margin-left: 98px;
+  }
+
+  .page-main__advice-text--mobile {
+    display: none;
+  }
+
+  .page-main__advice-text--desktop {
+    display: inline;
+  }
+
+  .page-main__scroll-down {
+    display: block;
+    width: 100px;
+    margin-left: -39px;
+    margin-top: 128px;
+    font-family: "PT Mono", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #ffffff;
+    opacity: 0.5;
+    text-decoration: none;
+    transform: rotate(-90deg);
+  }
 }
