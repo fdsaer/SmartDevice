@@ -25,13 +25,13 @@ gulp.task("css", function () {
     .pipe(csso())
     .pipe(rename("style-min.css"))
     .pipe(sourcemap.write("."))
-    .pipe(gulp.dest("build/css"))
+    .pipe(gulp.dest("docs/css"))
     .pipe(server.stream());
 });
 
 gulp.task("server", function () {
   server.init({
-    server: "build/",
+    server: "docs/",
     notify: false,
     open: true,
     cors: true,
@@ -46,12 +46,12 @@ gulp.task("server", function () {
 gulp.task("html", function () {
   return gulp.src("source/*.html")
   .pipe(posthtml())
-  .pipe(gulp.dest("build"));
+  .pipe(gulp.dest("docs"));
 });
 
 gulp.task("js", function () {
   return gulp.src("source/js/*.js", {base: "source"})
-  .pipe(gulp.dest("build"));
+  .pipe(gulp.dest("docs"));
 });
 
 gulp.task("copy", function () {
@@ -61,11 +61,11 @@ gulp.task("copy", function () {
     "source/img/*.*",
     "source/fonts/**/*.{woff,woff2}"
     ], {base: "source"})
-    .pipe(gulp.dest("build"));
+    .pipe(gulp.dest("docs"));
 });
 
 gulp.task("del", function () {
-  return del("build");
+  return del("docs");
 });
 
 gulp.task("images", function () {
@@ -74,7 +74,7 @@ gulp.task("images", function () {
       imagemin.jpegtran({progressive: true}),
       imagemin.svgo()
     ]))
-    .pipe(gulp.dest("build/img"));
+    .pipe(gulp.dest("docs/img"));
 });
 
 gulp.task("refresh", function (done) {
